@@ -33,7 +33,7 @@ func TestServe(t *testing.T) {
 	//*/
 
 	blis := bufconn.Listen(1024 * 1024)
-	s := Serve(srv, blis) // Error: missing method mustEmbedUnimplementedGreeterServer
+	s := Serve(srv, blis) // grpc: Server.RegisterService found the handler of type *mock_helloworld.MockGreeterServer that does not satisfy helloworld.GreeterServer
 	defer s.Stop()
 
 	dialer := func(ctx context.Context, address string) (net.Conn, error) {

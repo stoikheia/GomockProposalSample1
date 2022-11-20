@@ -22,7 +22,7 @@ func (s *Server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
 
-func Serve(srv pb.GreeterServer, lis net.Listener, opts ...grpc.ServerOption) *grpc.Server {
+func Serve(srv interface{}, lis net.Listener, opts ...grpc.ServerOption) *grpc.Server {
 	s := grpc.NewServer(opts...)
 	reflection.Register(s)
 	//pb.RegisterGreeterServer(s, srv)
